@@ -1,0 +1,40 @@
+-------------------------------------------------
+# requirements/specification
+-------------------------------------------------
+aka: what the software should be capable of
+
+# general
+- portability between win and linux
+- minimum memory footprint on host machine
+- how can the code be protected during runtime
+- how can the owner of the host machine be shut out???
+
+# crypto-remailer
+- core feature
+- receives a mail decrypts it, and forwards it encrypted to a list of recipients
+- all recipients are unknown to each other (configurable? if "unknwon" is deactivated, the list of recipients will be included in the paranoia_mail header)
+- sender may be obscured too (remove all ident info from header!)
+- adds a header to the mail:
+  - lists of recipients (if configured)
+  - sender (if configured?)
+  - sender successfully authenticated
+- configurable: sender authentication (by pgp signing):
+  - strict check (unauthenticated mails will be bounced)
+  - light check (authentication will be noted in paranoia_mail header)
+  - no check
+- must be usable with the same profile (see below) from different machines: mails are deleted on server upon remailing; configuration mus be downloadable from 
+
+# configuration management
+- all persistence must be done encrypted
+- there may be different profiles, each consisting of
+  - a list of recipients with their pgp keys
+  - configuration items
+  - pgp key pair of the list
+  - mailadress of the list
+- list configuration will be saved on mail server encrypted (special mail); and will be downloaded at startup??? yes!
+
+# gui
+- simple, portable, configurable...
+
+
+ 
